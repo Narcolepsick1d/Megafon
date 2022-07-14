@@ -21,7 +21,7 @@ public class Task1 {
 
         List<Object> input = list.stream().filter(o -> {
             if(o.getClass()==Integer.class){
-                //проверка и exception в случае не позитивного числа
+
                 //проверка на int
                 return true;
             }
@@ -30,7 +30,9 @@ public class Task1 {
 
             //второй фильтр поможет избавиться от множества операторов if
         }).filter(o -> {
+            //проверка и exception в случае не позитивного числа
             if (Integer.parseInt(o.toString())<0) {
+
                 throw new IllegalStateException("VVidite Positivnoe Chislo");
             }
             else return true;
