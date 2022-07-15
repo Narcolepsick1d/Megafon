@@ -13,23 +13,14 @@ public class Task1 {
     }
 
     public static List<Object> filterList(final List<Object> list) {
+        //СТАЛО
         //есть ли элементы
         if(list.isEmpty()) {
             throw new NullPointerException("List pustoy");
         }
-        //лист с инпутами
-
-        List<Object> input = list.stream().filter(o -> {
-            if(o.getClass()==Integer.class){
-
-                //проверка на int
-                return true;
-            }
-            //string и другие элементы не допускаются
-            return false;
-
-            //второй фильтр поможет избавиться от множества операторов if
-        }).filter(o -> {
+        //возрашаем методу filterList
+        return list.stream().filter(o -> o instanceof Integer).//фильтр для нахождения int
+                filter(o -> {
             //проверка и exception в случае не позитивного числа
             if (Integer.parseInt(o.toString())<0) {
 
@@ -39,17 +30,15 @@ public class Task1 {
 
             //должен вернуть этому методу лист с отбором
         }).collect(Collectors.toList());
-    //возрашаем методу filterList
-        return input;
-        //Тут чу чуть похимичил и это тоже рабочая логика скажите если она лучше
-//        return list.stream().filter(o -> {
-//            return o.getClass() == Integer.class;
-//        }).filter(o -> {
-//            if (Integer.parseInt(o.toString())<0) {
-//                throw new IllegalStateException("VVidite Positivnoe Chislo");
-//            }
-//            else return true;
-//        }).collect(Collectors.toList());
+        //БЫЛО
+       /* List<Object> input = list.stream().filter(o -> o instanceof Integer).filter(o -> {
+            if ((int) o < 0) {
+                throw new IllegalStateException("VVidite Positivnoe Chislo");
+            }
+            return true;
+        }).collect(Collectors.toList());
+        //возрашаем методу filterList
+        return input;*/
 
 
 
